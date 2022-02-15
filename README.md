@@ -18,6 +18,8 @@ Reemplazar ```<cadena_de_conexión>``` por la cadena de conexión de su base de 
 datos y una colección para almacenar las facturas. Si la base de datos y la colección tienen nombres diferentes a los
 configurados, debe cambiarlos para que los valores coincidan.
 
+``Nota: Para fines prácticos, se puede importar el archivo data.json a mongo db. Este archivo contiene una lista de facturas.``
+
 ```json
 {
   "EmailSettings": {
