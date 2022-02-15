@@ -10,6 +10,7 @@ public class Invoice
     public string? Id { get; set; }
 
     public string Customer { get; set; }
+    public string CustomerEmail { get; set; }
     public string City { get; set; }
     public string Nit { get; set; }
 
@@ -20,7 +21,7 @@ public class Invoice
 
     public DateTime CreatedAt { get; set; }
 
-    public string State { get; set; }
+    public InvoiceState State { get; set; }
 
     public bool Paid { get; set; }
     public DateTime? PaidAt { get; set; }

@@ -19,7 +19,7 @@ public class MongoDbInvoicesRepository : IInvoicesRepository
 
     public async Task<IEnumerable<Invoice>> SearchAll() => await _invoices.Find(invoice => true).ToListAsync();
 
-    public async Task<Invoice?> UpdateState(string id, string state)
+    public async Task<Invoice?> UpdateState(string id, InvoiceState state)
     {
         var invoice = await _invoices.Find(i => i.Id == id).FirstOrDefaultAsync();
         if (invoice is null) return null;

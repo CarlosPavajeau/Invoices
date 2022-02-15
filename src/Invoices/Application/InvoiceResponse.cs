@@ -18,6 +18,14 @@ public record InvoiceResponse(
 {
     public static InvoiceResponse FromAggregate(Invoice invoice)
     {
+        var state = invoice.State switch
+        {
+            InvoiceState.FirstReminder => "Primer recordatorio",
+            InvoiceState.SecondReminder => "Segundo recordatorio",
+            InvoiceState.Disabled => "Servicio desactivado",
+            _ => "Desconocido"
+        };
+
         return new InvoiceResponse(
             invoice.Id,
             invoice.Customer,
@@ -28,7 +36,7 @@ public record InvoiceResponse(
             invoice.Iva,
             invoice.Retention,
             invoice.CreatedAt,
-            invoice.State,
+            state,
             invoice.Paid,
             invoice.PaidAt);
     }

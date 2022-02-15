@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Invoices.Application.Notify;
 using Invoices.Application.SearchAll;
 using Invoices.Domain;
 using Moq;
@@ -16,7 +17,8 @@ public class SearchAllInvoicesQueryHandlerTest : UnitTestCase
 
     public SearchAllInvoicesQueryHandlerTest()
     {
-        _handler = new SearchAllInvoicesQueryHandler(new InvoicesSearcher(Repository.Object));
+        _handler = new SearchAllInvoicesQueryHandler(new InvoicesSearcher(Repository.Object),
+            new InvoiceNotifier(new Mock<IInvoiceNotifier>().Object));
 
         Repository.Setup(x => x.SearchAll()).ReturnsAsync(new List<Invoice>
         {
