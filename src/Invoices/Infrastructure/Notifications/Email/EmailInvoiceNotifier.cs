@@ -32,9 +32,9 @@ public class EmailInvoiceNotifier : IInvoiceNotifier
     {
         return invoice.State switch
         {
-            InvoiceState.SecondReminder =>
+            InvoiceState.FirstReminder =>
                 $"Estimado cliente {invoice.Customer}, le informamos que el estado de su factura a pasado a segundo recordatorio.",
-            InvoiceState.Disabled =>
+            InvoiceState.SecondReminder =>
                 $"Estimado cliente {invoice.Customer}, le informamos que el servicio va a ser desactivado.",
             _ => throw new ArgumentOutOfRangeException(nameof(invoice), invoice.State, null)
         };

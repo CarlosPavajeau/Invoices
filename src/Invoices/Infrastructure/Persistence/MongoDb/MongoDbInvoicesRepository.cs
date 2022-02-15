@@ -29,4 +29,9 @@ public class MongoDbInvoicesRepository : IInvoicesRepository
 
         return invoice;
     }
+
+    public async Task Update(string id, Invoice newInvoice)
+    {
+        await _invoices.ReplaceOneAsync(i => i.Id == id, newInvoice);
+    }
 }

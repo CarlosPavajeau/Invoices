@@ -25,4 +25,14 @@ public class Invoice
 
     public bool Paid { get; set; }
     public DateTime? PaidAt { get; set; }
+
+    public void UpdateState()
+    {
+        State = State switch
+        {
+            InvoiceState.FirstReminder => InvoiceState.SecondReminder,
+            InvoiceState.SecondReminder => InvoiceState.Disabled,
+            _ => InvoiceState.Disabled
+        };
+    }
 }
